@@ -2,6 +2,8 @@ data*
 config_local.py
 # Azure related // jgil
 *.amlignore*
+# Colab
+sample_data
 
 # GENERIC STUFF
 # -------------

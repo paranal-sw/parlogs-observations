@@ -2,14 +2,15 @@
 
 ## Dataset Summary
 
-Parlogs-Observations is a comprehensive dataset that includes the Very Large Telescope (VLT) logs for Template Execution of PIONIER, GRAVITY, and MATISSE instruments when they used Auxiliary Telescopes (ATs). It also encompasses all VLTI subsystems and ATs logs. This dataset aggregates logs based on instruments, time ranges, and subsystems, and contains template executions from 2019 in the VLTI infrastructure at Paranal. The dataset is formatted in single Parket files, which can be conveniently loaded, for example, with Pandas in Python.
+Parlogs-Observations is a comprehensive dataset that includes the Very Large Telescope (VLT) logs for Template Execution of PIONIER, GRAVITY, and MATISSE instruments when they used Auxiliary Telescopes (ATs). It also includes VLTI subsystems and ATs logs during the observatons. This dataset aggregates logs based on instruments, time ranges, and subsystems, and contains template executions from 2019 in the VLTI infrastructure at Paranal. The dataset is formatted in single Parket files, which can be conveniently loaded, for example, with Pandas in Python.
 
 This repository provides tutorials for the parlogs-observations dataset, available at:
 
 * https://huggingface.co/datasets/Paranal/parlogs-observations
-* Zenodo
 
-## Install
+Refer to that repository for a complete description of the data.
+
+## Local Install
 
 We recommend to install a virtual environment to encapsulate the required libraries, but they are rather standard. 
 
@@ -20,19 +21,17 @@ source env/bin/activate
 
 # Install requirements
 pip3 install -r requirements.txt
+
+# Link to data path, if different to default:
+ln -s /path/to/data notebooks/sample_data
 ```
 
-## Supported Tasks and Leaderboards
 
-The `parlogs-observations` dataset is a resource for researchers and practitioners in astronomy, data analysis, and machine learning. It enables a wide range of tasks focused on enhancing the understanding and operation of the Very Large Telescope Interferometer (VLTI) infrastructure. The following tasks are supported by the dataset:
 
-- **Anomaly Detection**: Users can identify unusual patterns or abnormal behavior in the log data that could indicate errors or bugs. This is crucial in providing operaional maintenance to the VLTI.
+## Run in Google Colaboratory
 
-- **System Diagnosis**: The dataset allows for diagnosing system failures or performance issues. By analyzing error logs, trace logs, or event logs, researchers can pinpoint and address the root causes of various operational issues.
+In each notebook of this repository there is a link to its corresponding colab to execute it.
 
-- **Performance Monitoring**: With this dataset, monitoring the performance of the VLTI systems becomes feasible. Users can track and analyze systems to understand resource usage, detect latency issues, or identify bottlenecks in the infrastructure.
-
-- **Predictive Maintenance**: Leveraging the dataset for predictive maintenance helps in foreseeing system failures or issues before they occur. This is achieved by analyzing trends and patterns in the log data to implement timely interventions.
 
 ## Observations at Paranal
 
@@ -59,35 +58,16 @@ Example files:
 
 The "meta" file includes information about the template execution, while "traces" files contain event logs.
 
-The exisiting files are shown in the table below:
 
-
-| GRAVITY                   | PIONIER                   | MATISSE                   |
-|---------------------------|---------------------------|---------------------------|
-| GRAVITY-1d-meta.parket    | PIONIER-1d-meta.parket    | MATISSE-1d-meta.parket    |
-| GRAVITY-1d-traces-SUBSYSTEMS.parket | PIONIER-1d-traces-SUBSYSTEMS.parket | MATISSE-1d-traces-SUBSYSTEMS.parket |
-| GRAVITY-1d-traces-TELESCOPES.parket | PIONIER-1d-traces-TELESCOPES.parket | MATISSE-1d-traces-TELESCOPES.parket |
-| GRAVITY-1d-traces.parket  | PIONIER-1d-traces.parket  | MATISSE-1d-traces.parket  |
-| GRAVITY-1m-meta.parket    | PIONIER-1m-meta.parket    | MATISSE-1m-meta.parket    |
-| GRAVITY-1m-traces-SUBSYSTEMS.parket | PIONIER-1m-traces-SUBSYSTEMS.parket | MATISSE-1m-traces-SUBSYSTEMS.parket |
-| GRAVITY-1m-traces-TELESCOPES.parket | PIONIER-1m-traces-TELESCOPES.parket | MATISSE-1m-traces-TELESCOPES.parket |
-| GRAVITY-1m-traces.parket  | PIONIER-1m-traces.parket  | MATISSE-1m-traces.parket  |
-| GRAVITY-1w-meta.parket    | PIONIER-1w-meta.parket    | MATISSE-1w-meta.parket    |
-| GRAVITY-1w-traces-SUBSYSTEMS.parket | PIONIER-1w-traces-SUBSYSTEMS.parket | MATISSE-1w-traces-SUBSYSTEMS.parket |
-| GRAVITY-1w-traces-TELESCOPES.parket | PIONIER-1w-traces-TELESCOPES.parket | MATISSE-1w-traces-TELESCOPES.parket |
-| GRAVITY-1w-traces.parket  | PIONIER-1w-traces.parket  | MATISSE-1w-traces.parket  |
-| GRAVITY-6m-meta.parket    | PIONIER-6m-meta.parket    | MATISSE-6m-meta.parket    |
-| GRAVITY-6m-traces-SUBSYSTEMS.parket | PIONIER-6m-traces-SUBSYSTEMS.parket | MATISSE-6m-traces-SUBSYSTEMS.parket |
-| GRAVITY-6m-traces-TELESCOPES.parket | PIONIER-6m-traces-TELESCOPES.parket | MATISSE-6m-traces-TELESCOPES.parket |
-| GRAVITY-6m-traces.parket  | PIONIER-6m-traces.parket  | MATISSE-6m-traces.parket  |
-
-## Combining Files
+## Common splits
 
 Files from same instrument and within the same time range belong to the same trace_id. For instance, in the files:
 - PIONIER-1w-meta.parket
 - PIONIER-1w-traces.parket
 
 The trace_id=10 in PIONIER-1w-traces.parket file corresponds to the id=10 in the meta file PIONIER-1w-meta.parket.
+
+The notebook XX shows how to obtain common splits.
 
 ## Data Instances
 
@@ -171,9 +151,6 @@ Where the fields are:
 | Aborted   | Indicates if the template execution was aborted (manually or because an error) |
 | SECONDS   | The duration of the template execution in seconds             |
 | TEL       | The class of telescope used in the observation, in this dataset it is only AT |
-
-
-This structured format ensures a comprehensive understanding of each template's execution, providing insights into the operational dynamics of astronomical observations at Paranal.
 
 
 ## Citation
